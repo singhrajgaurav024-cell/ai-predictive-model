@@ -1,0 +1,19 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Model artifacts (regenerate via src/main.py)
+models/*.joblib
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
