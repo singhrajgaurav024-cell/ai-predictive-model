@@ -2,51 +2,51 @@
   "algorithm": "random_forest",
   "train_size": 1600,
   "test_size": 400,
-  "accuracy": 0.795,
-  "precision": 0.7089,
-  "recall": 0.7568,
-  "f1_score": 0.732,
-  "roc_auc": 0.8686,
+  "accuracy": 0.79,
+  "precision": 0.686,
+  "recall": 0.7973,
+  "f1_score": 0.7375,
+  "roc_auc": 0.8671,
   "top_features": [
     {
       "feature": "num__tenure_months",
-      "importance": 0.2454
+      "importance": 0.2376
     },
     {
       "feature": "num__total_charges",
-      "importance": 0.1797
-    },
-    {
-      "feature": "num__monthly_charges",
-      "importance": 0.1113
+      "importance": 0.1761
     },
     {
       "feature": "cat__contract_type_Two Year",
-      "importance": 0.1102
+      "importance": 0.116
+    },
+    {
+      "feature": "num__monthly_charges",
+      "importance": 0.1155
     },
     {
       "feature": "cat__contract_type_One Year",
-      "importance": 0.0718
+      "importance": 0.0753
     },
     {
       "feature": "num__num_support_calls",
-      "importance": 0.0564
+      "importance": 0.0545
     },
     {
       "feature": "cat__internet_service_Fiber Optic",
-      "importance": 0.0503
+      "importance": 0.0534
     },
     {
       "feature": "cat__online_security_Yes",
-      "importance": 0.0361
+      "importance": 0.0359
     },
     {
       "feature": "cat__tech_support_Yes",
-      "importance": 0.0354
+      "importance": 0.0338
     },
     {
       "feature": "cat__payment_method_Electronic Check",
-      "importance": 0.0221
+      "importance": 0.0234
     }
   ]
 }

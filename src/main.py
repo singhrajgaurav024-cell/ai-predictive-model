@@ -68,20 +68,39 @@ def main():
     X_train = pre.fit_transform(X_train_raw)
     X_test = pre.transform(X_test_raw)
 
-    # 3. Train -----------------------------------------------------------------
+   # 3. Train -----------------------------------------------------------------
     print(f"[3/5] Training '{args.algorithm}' model on {X_train.shape[0]} samples ...")
+
     model = PredictiveModel(algorithm=args.algorithm)
     model.train(X_train, y_train)
     model.save(MODEL_DIR / f"{args.algorithm}.joblib")
 
+    import joblib
+
+    joblib.dump(
+        {
+            "model": model.estimator,
+            "preprocessor": pre.column_transformer
+        },
+        MODEL_DIR / "churn_pipeline.joblib"
+    )
+
     # 4. Evaluate --------------------------------------------------------------
     print(f"[4/5] Evaluating on {X_test.shape[0]} held-out samples ...")
+
     y_pred = model.predict(X_test)
     y_proba = model.predict_proba(X_test)
+
     evaluator = Evaluator(y_test, y_pred, y_proba)
     metrics = evaluator.compute_metrics()
-    evaluator.plot_confusion_matrix(REPORTS_DIR / "confusion_matrix.png")
-    evaluator.plot_roc_curve(REPORTS_DIR / "roc_curve.png")
+
+    evaluator.plot_confusion_matrix(
+        REPORTS_DIR / "confusion_matrix.png"
+    )
+
+    evaluator.plot_roc_curve(
+        REPORTS_DIR / "roc_curve.png"
+    )
 
     print("      Metrics:")
     for k, v in metrics.items():
